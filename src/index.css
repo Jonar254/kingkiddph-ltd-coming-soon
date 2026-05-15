@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f1ea;
+  color: #3d3935;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.font-serif-display {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.font-sans-label {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.font-sans-nav {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.5rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 400;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 220ms ease, color 220ms ease;
+  color: #3d3935;
+}
+
+.btn-line:hover {
+  background-color: #3d3935;
+  color: #f5f1ea;
+}
+
+.btn-line-light {
+  color: #f5f1ea;
+}
+
+.btn-line-light:hover {
+  background-color: #f5f1ea;
+  color: #3d3935;
+}
+
+.divider-arc {
+  width: 64px;
+  height: 28px;
+  border: 1px solid #6b625b;
+  border-bottom: none;
+  border-radius: 64px 64px 0 0;
+  margin: 0 auto;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1100ms ease, transform 1100ms ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@layer base {
+  :root {
+    --background: 36 25% 94%;
+    --foreground: 28 8% 22%;
+    --card: 36 25% 94%;
+    --card-foreground: 28 8% 22%;
+    --popover: 36 25% 94%;
+    --popover-foreground: 28 8% 22%;
+    --primary: 28 8% 22%;
+    --primary-foreground: 36 25% 94%;
+    --secondary: 33 14% 88%;
+    --secondary-foreground: 28 8% 22%;
+    --muted: 33 14% 88%;
+    --muted-foreground: 30 6% 45%;
+    --accent: 33 14% 88%;
+    --accent-foreground: 28 8% 22%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 36 25% 94%;
+    --border: 30 10% 80%;
+    --input: 30 10% 75%;
+    --ring: 28 8% 22%;
+    --radius: 0px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Inquire form */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #b9b1a8;
+  padding: 0.7rem 0;
+  color: #3d3935;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.form-input:focus {
+  border-bottom-color: #3d3935;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f1a17;
+  margin-bottom: 0.4rem;
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 110px;
+  border: 1px solid #b9b1a8;
+  padding: 0.9rem;
+}
+
+textarea.form-input:focus {
+  border-color: #3d3935;
+}
+
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%236b625b' d='M6 9L1 4h10z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.2rem center;
+}
+
+/* Marquee for featured-in */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+
+/* Hero image cinematic zoom */
+@keyframes slowZoom {
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1.12); }
+}
+.kenburns {
+  animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+/* Portfolio hover */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.portfolio-card img {
+  transition: transform 1100ms ease;
+}
+.portfolio-card:hover img {
+  transform: scale(1.06);
+}
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(61,57,53,0) 50%, rgba(61,57,53,0.55) 100%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  color: #f5f1ea;
+}
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Section background variants */
+.bg-cream { background-color: #f5f1ea; }
+.bg-stone { background-color: #e6e1d8; }
+.bg-warm-dark { background-color: #5c534e; }
+
+/* Hide scrollbar on horizontal track */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animated logo */
+@keyframes logoFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-logo-float {
+  animation: logoFloat 6s ease-in-out infinite;
+}

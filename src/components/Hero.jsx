@@ -38,7 +38,7 @@ const Hero = () => {
         >
           {heroContent.eyebrow}
         </p>
-        <h1 className="font-serif-display text-[#f5f1ea] text-5xl md:text-7xl lg:text-7xl leading-[1.05] max-w-5xl whitespace-pre-line">
+        <h1 className="font-serif-display text-[#f5f1ea] text-5xl md:text-6xl lg:text-6xl leading-[1.05] max-w-5xl whitespace-pre-line">
           {heroContent.title}
         </h1>
         <a

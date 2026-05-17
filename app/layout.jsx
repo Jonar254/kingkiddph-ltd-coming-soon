@@ -29,7 +29,7 @@ export const metadata = {
     images: ["/images/Lounge.jpeg"],
   },
   icons: {
-    icon: "/images/logo-one.png",
+    icon: "/images/favicon.png",
   },
 };
 

@@ -14,8 +14,8 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto mt-16 pt-8 border-t border-white/20 text-center text-sm tracking-[0.25em] uppercase">
-        <p>&copy; 2026 Form & Finish | Website designed by Jonathan M</p>
+      <div className="max-w-4xl mx-auto mt-16 pt-8 border-t border-white/20 text-center text-sm tracking-[0.25em] ">
+        <p>&copy; 2026 Form & Finish | All rights reserved</p>
       </div>
       <div className="max-w-4xl mx-auto mt-8 p  text-center text-sm tracking-[0.25em]">
         <p> Website designed by Jonathan M</p>

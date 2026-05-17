@@ -31,7 +31,8 @@ const InquireForm = () => {
       "subject",
       "New inquiry submitted via Form & Finish website"
     );
-    submission.append("from_name", formData.name || "Form & Finish Website");
+    const fullName = `${formData.firstName || ""} ${formData.lastName || ""}`.trim();
+    submission.append("from_name", fullName || "Form & Finish Website");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -105,19 +106,35 @@ const InquireForm = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-7">
-          <div>
-            <label className="form-label text-black text-sm md:text-base font-semibold" htmlFor="name">
-              Your name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              placeholder="First and last name"
-              className="form-input"
-              onChange={handleChange}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="form-label text-black text-sm md:text-base font-semibold" htmlFor="firstName">
+                First name
+              </label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                required
+                placeholder="First name"
+                className="form-input"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label className="form-label text-black text-sm md:text-base font-semibold" htmlFor="lastName">
+                Last name
+              </label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                required
+                placeholder="Last name"
+                className="form-input"
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
           <div>

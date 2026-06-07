@@ -2,31 +2,35 @@ import "@/index.css";
 import { Montserrat } from "next/font/google";
 
 export const metadata = {
-  title: "Your material partner, from concept to completion.",
+  title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
   description:
-    "From factory floors in China to finished rooms in Nairobi, Form & Finish is your material and fit-out partner, from concept to completion.",
+    "Coming Soon: Kingkiddph Production is a Kenya-based film and content production company creating purposeful visual storytelling for brands that want to connect, inspire and leave a lasting impact.",
   openGraph: {
-    title: "Your material partner, from concept to completion.",
+    title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
     description:
-      "From factory floors in China to finished rooms in Nairobi, Form & Finish is your material and fit-out partner, from concept to completion.",
-    url: "https://formandfinish.com",
-    siteName: "Form & Finish",
+      "Coming Soon: Kenya-based film and content production company creating purposeful visual storytelling. We produce documentaries, brand films, marketing campaigns, and digital content that feels authentic, cinematic and human.",
+    url: "https://kingkiddph.com",
+    siteName: "Kingkiddph Ltd",
     type: "website",
     images: [
       {
-        url: "/images/Lounge.jpeg",
+        url: "/images/kingkidd-webp/KingKiddPH-173.jpg",
         width: 1200,
         height: 630,
-        alt: "Form & Finish material sourcing and fit-out",
+        alt: "Kingkiddph Production crew on set",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your material partner, from concept to completion.",
+    title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
     description:
-      "From factory floors in China to finished rooms in Nairobi, Form & Finish is your material and fit-out partner, from concept to completion.",
-    images: ["/images/Lounge.jpeg"],
+      "Coming Soon: Kenya-based film and content production company creating purposeful visual storytelling for brands that connect, inspire and leave a lasting impact.",
+    images: ["/images/kingkidd-webp/KingKiddPH-173.jpg"],
+  },
+  robots: {
+    index: false,
+    follow: false,
   },
   icons: {
     icon: "/images/favicon.png",

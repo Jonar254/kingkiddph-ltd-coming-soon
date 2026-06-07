@@ -29,7 +29,7 @@ const Header = () => {
             }`}
             style={{ color: scrolled ? "#3d3935" : "#f5f1ea" }}
           >
-            FORM & FINISH
+            KINGKIDDPH LTD
           </a>
 
           <nav className="hidden md:flex items-center gap-9">
@@ -81,7 +81,7 @@ const Header = () => {
         >
           <div className="flex justify-between items-center px-10 py-8">
             <span className="font-serif-display text-lg tracking-[0.18em] text-[#3d3935]">
-              FORM & FINISH
+              KINGKIDDPH LTD
             </span>
             <button onClick={() => setMenuOpen(false)} aria-label="close menu" className="text-[#3d3935]">
               <X size={22} strokeWidth={1.2} />
@@ -101,8 +101,8 @@ const Header = () => {
           </nav>
           <div className="absolute bottom-10 left-10 right-10 text-[#6b625b]">
             <p className="eyebrow mb-3">Connect</p>
-            <p className="text-sm tracking-wider">hello@formandfinish.com</p>
-            <p className="text-sm tracking-wider mt-1">Nairobi · Guangzhou</p>
+            <p className="text-sm tracking-wider">hello@kingkiddph.com</p>
+            <p className="text-sm tracking-wider mt-1">Nairobi, Kenya</p>
           </div>
         </aside>
       </div>

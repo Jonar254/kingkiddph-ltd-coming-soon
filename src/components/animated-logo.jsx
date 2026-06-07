@@ -22,8 +22,8 @@ export function AnimatedLogo() {
         <div className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
           <div className="relative w-full h-full">
             <Image
-              src="/images/form-and-finish-white.webp"
-              alt="Form & Finish Logo"
+              src="/images/kingkidd-logo-webp/logo-white.webp"
+              alt="Kingkiddph Ltd logo"
               fill
               sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, (max-width: 1024px) 160px, 192px"
               className="object-contain"

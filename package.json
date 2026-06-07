@@ -1,5 +1,6 @@
 {
-  "name": "frontend",
+  "name": "kingkiddph-ltd-coming-soon",
+  "description": "Coming soon landing page for Kingkiddph Ltd",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.40.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.507.0",
     "next": "16.2.6",

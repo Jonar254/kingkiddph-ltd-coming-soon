@@ -23,13 +23,12 @@ const initialFormState = {
 };
 
 const serviceOptions = [
-  "Branding",
-  "Consultation",
-  "Corporate Event",
-  "Documentary",
-  "Drone Coverage",
-  "Wedding",
-  "Other",
+  "Videography services (corporate, Events, Documentaries, Ads)",
+  "Photography Services (corporate, Events, Documentaries)",
+  "Social Media Services",
+  "Website Services",
+  "Live streaming Services",
+  "Podcast Services",
 ];
 
 const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];

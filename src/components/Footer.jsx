@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-20 pb-10 px-6 md:px-12">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        <div className="w-48 md:w-60">
+        <div className="w-32 md:w-40">
           <AnimatedLogo />
         </div>
         <p className="text-base md:text-lg leading-relaxed tracking-wide mt-2 max-w-3xl">

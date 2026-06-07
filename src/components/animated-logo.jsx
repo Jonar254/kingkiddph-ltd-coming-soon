@@ -19,7 +19,7 @@ export function AnimatedLogo() {
       className="opacity-0 scale-95 transition-all duration-1000"
     >
       <div className="relative animate-logo-float">
-        <div className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
+        <div className="w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 flex items-center justify-center">
           <div className="relative w-full h-full">
             <Image
               src="/images/kingkidd-logo-webp/logo-white.webp"

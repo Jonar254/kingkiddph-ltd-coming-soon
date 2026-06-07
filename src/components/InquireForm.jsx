@@ -230,8 +230,8 @@ const contactChannels = [
   },
   {
     label: "Email",
-    value: "admin@kingkiddphltd.co.ke",
-    href: "mailto:admin@kingkiddphltd.co.ke",
+    value: "kingkiddphltd@gmail.com",
+    href: "mailto:kingkiddphltd@gmail.com",
   },
   {
     label: "WhatsApp",
@@ -440,7 +440,7 @@ const InquireForm = () => {
               </div>
             </div>
 
-            <div className="space-y-3 text-sm uppercase tracking-[0.25em] text-white font-semibold">
+            <div className="hidden lg:flex flex-col gap-3 text-sm uppercase tracking-[0.25em] text-white font-semibold">
               {contactChannels.map((channel) => (
                 <div key={channel.label} className="flex flex-col gap-1">
                   <span>{channel.label}</span>
@@ -686,6 +686,20 @@ const InquireForm = () => {
                 </form>
               )}
             </div>
+          </div>
+
+          <div className="order-3 lg:hidden flex flex-col gap-3 text-center text-sm uppercase tracking-[0.25em] text-white font-semibold">
+            {contactChannels.map((channel) => (
+              <div key={channel.label} className="flex flex-col gap-1">
+                <span>{channel.label}</span>
+                <a
+                  href={channel.href}
+                  className="text-white normal-case tracking-normal text-base font-medium hover:text-[#FF9500] transition-colors"
+                >
+                  {channel.value}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>

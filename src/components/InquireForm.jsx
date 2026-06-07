@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   Check,
@@ -9,6 +9,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { inquireSection } from "../mock/mock";
+import CalendarScheduler from "./CalendarScheduler";
+import CustomSelect from "./CustomSelect";
 
 const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
@@ -20,6 +22,8 @@ const initialFormState = {
   jobLocation: "",
   shootDate: "",
   message: "",
+  callDate: "",
+  callTime: "",
 };
 
 const serviceOptions = [
@@ -268,15 +272,16 @@ const InquireForm = () => {
   );
   const [isLoadingCountries, setIsLoadingCountries] = useState(false);
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
-  const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
-  const [serviceHighlightIndex, setServiceHighlightIndex] = useState(-1);
-  const serviceDropdownRef = useRef(null);
   const countryDropdownRef = useRef(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleScheduleChange = useCallback(({ date, time }) => {
+    setFormData((prev) => ({ ...prev, callDate: date, callTime: time }));
+  }, []);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -332,35 +337,12 @@ const InquireForm = () => {
     [countryOptions, selectedCountryCode],
   );
 
-  const handleServiceSelect = (option) => {
-    setFormData((prev) => ({ ...prev, service: option }));
-    setServiceMenuOpen(false);
-    setServiceHighlightIndex(-1);
-    setError("");
-  };
-
   useEffect(() => {
-    if (serviceMenuOpen) {
-      const currentIndex = serviceOptions.findIndex(
-        (option) => option === formData.service,
-      );
-      setServiceHighlightIndex(currentIndex >= 0 ? currentIndex : 0);
-    }
-  }, [serviceMenuOpen, formData.service]);
-
-  useEffect(() => {
-    if (!serviceMenuOpen && !countryDropdownOpen) {
+    if (!countryDropdownOpen) {
       return undefined;
     }
 
     const handleClickOutside = (event) => {
-      if (
-        serviceDropdownRef.current &&
-        !serviceDropdownRef.current.contains(event.target)
-      ) {
-        setServiceMenuOpen(false);
-        setServiceHighlightIndex(-1);
-      }
       if (
         countryDropdownRef.current &&
         !countryDropdownRef.current.contains(event.target)
@@ -374,7 +356,7 @@ const InquireForm = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [serviceMenuOpen, countryDropdownOpen]);
+  }, [countryDropdownOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -384,7 +366,6 @@ const InquireForm = () => {
     if (!formData.service) {
       setError("Please choose a service before submitting your inquiry.");
       setIsSubmitting(false);
-      setServiceMenuOpen(false);
       return;
     }
 
@@ -412,6 +393,8 @@ const InquireForm = () => {
     );
     submission.set("dial_code", selectedCountry.code);
     submission.set("country", selectedCountry.name);
+    submission.set("call_date", formData.callDate);
+    submission.set("call_time", formData.callTime);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -428,8 +411,6 @@ const InquireForm = () => {
       setTimeout(() => setSubmitted(false), 4500);
       setFormData(initialFormState);
       setSelectedCountryCode(DEFAULT_COUNTRY.cca2);
-      setServiceMenuOpen(false);
-      setServiceHighlightIndex(-1);
       setCountryDropdownOpen(false);
       formElement.reset();
     } catch (err) {
@@ -619,81 +600,16 @@ const InquireForm = () => {
                     <label className={labelClass} htmlFor="service">
                       Which service are you looking for?
                     </label>
-                    <div
-                      ref={serviceDropdownRef}
-                      className="relative"
-                    >
-                      <button
-                        type="button"
-                        id="service"
-                        aria-haspopup="listbox"
-                        aria-expanded={serviceMenuOpen}
-                        onClick={() => setServiceMenuOpen((prev) => !prev)}
-                        onKeyDown={(event) => {
-                          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-                            event.preventDefault();
-                            setServiceMenuOpen(true);
-                            setServiceHighlightIndex((prev) => {
-                              const direction = event.key === "ArrowDown" ? 1 : -1;
-                              const nextIndex = prev + direction;
-                              if (nextIndex < 0) return serviceOptions.length - 1;
-                              if (nextIndex >= serviceOptions.length) return 0;
-                              return nextIndex;
-                            });
-                          }
-                          if (event.key === "Enter" && serviceMenuOpen) {
-                            event.preventDefault();
-                            if (serviceHighlightIndex >= 0) {
-                              handleServiceSelect(serviceOptions[serviceHighlightIndex]);
-                            }
-                          }
-                          if (event.key === "Escape") {
-                            setServiceMenuOpen(false);
-                            setServiceHighlightIndex(-1);
-                          }
-                        }}
-                        className={`${inputClass} flex items-center justify-between border border-white/15 px-4 py-3 text-left`}
-                      >
-                        <span className="truncate">
-                          {formData.service || "Choose service*"}
-                        </span>
-                        <ChevronDown
-                          className={`ml-3 h-5 w-5 text-white transition-transform ${
-                            serviceMenuOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      {serviceMenuOpen && (
-                        <ul
-                          role="listbox"
-                          className="absolute z-30 mt-2 w-full border border-white/10 bg-black/90 backdrop-blur-lg shadow-lg"
-                        >
-                          {serviceOptions.map((option, index) => {
-                            const isSelected = option === formData.service;
-                            const isActive = index === serviceHighlightIndex;
-                            return (
-                              <li
-                                key={option}
-                                role="option"
-                                aria-selected={isSelected}
-                                onMouseEnter={() => setServiceHighlightIndex(index)}
-                                onMouseLeave={() => setServiceHighlightIndex(-1)}
-                                onClick={() => handleServiceSelect(option)}
-                                className={`px-4 py-3 text-sm uppercase tracking-[0.18em] transition-colors cursor-pointer ${
-                                  isActive
-                                    ? "bg-white/15 text-white"
-                                    : isSelected
-                                    ? "bg-[#FF9500]/20 text-[#FF9500]"
-                                    : "text-white hover:bg-white/10"
-                                }`}
-                              >
-                                {option}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      )}
-                    </div>
+                    <CustomSelect
+                      value={formData.service}
+                      onChange={(value) => {
+                        setFormData((prev) => ({ ...prev, service: value }));
+                        setError("");
+                      }}
+                      options={serviceOptions.map((option) => ({ value: option, label: option }))}
+                      placeholder="Choose service*"
+                      required
+                    />
                     <input type="hidden" name="service" value={formData.service} />
                   </div>
 
@@ -726,7 +642,7 @@ const InquireForm = () => {
                     />
                   </div>
 
-                  <div className={`${fieldWrapperClass} pb-0`}> 
+                  <div className={`${fieldWrapperClass} pb-0`}>
                     <label className={labelClass} htmlFor="message">
                       Enter your message
                     </label>
@@ -739,6 +655,17 @@ const InquireForm = () => {
                       value={formData.message}
                       onChange={handleChange}
                       className={`${inputClass} resize-none leading-relaxed bg-transparent`}
+                    />
+                  </div>
+
+                  <div className="border-b border-white/15 pb-0">
+                    <label className={`${labelClass} mb-4 block`}>
+                      Schedule a call <span className="text-white">(optional)</span>
+                    </label>
+                    <CalendarScheduler
+                      dateValue={formData.callDate}
+                      timeValue={formData.callTime}
+                      onChange={handleScheduleChange}
                     />
                   </div>
 

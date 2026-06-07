@@ -84,11 +84,11 @@ const Hero = () => {
             ))}
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
-              <p className="eyebrow mb-6 text-sm uppercase tracking-[0.35em] text-white/80">
+              <p className="eyebrow mb-6 text-sm uppercase tracking-[0.35em] text-white">
                 {heroContent.eyebrow}
               </p>
               <h1 className="font-serif-display whitespace-pre-line text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
-                {heroContent.title}
+                <span className="font-black">{heroContent.title}</span>
               </h1>
               <div className="mt-10">
                 <a
@@ -106,7 +106,7 @@ const Hero = () => {
 
       <motion.a
         href="#inquire"
-        className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-white/60"
+        className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-white"
         aria-label="scroll down"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

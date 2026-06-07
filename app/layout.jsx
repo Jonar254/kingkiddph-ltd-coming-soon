@@ -4,11 +4,12 @@ import { Montserrat } from "next/font/google";
 export const metadata = {
   title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
   description:
-    "Coming Soon: Kingkiddph Production is a Kenya-based film and content production company creating purposeful visual storytelling for brands that want to connect, inspire and leave a lasting impact.",
+    "Kenya-based film and content production company creating purposeful visual storytelling for brands that want to connect, inspire and leave a lasting impact.",
+  metadataBase: new URL("https://kingkiddph.com"),
   openGraph: {
     title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
     description:
-      "Coming Soon: Kenya-based film and content production company creating purposeful visual storytelling. We produce documentaries, brand films, marketing campaigns, and digital content that feels authentic, cinematic and human.",
+      "Kenya-based film and content production company creating purposeful visual storytelling. We produce documentaries, brand films, marketing campaigns, and digital content that feels authentic, cinematic and human.",
     url: "https://kingkiddph.com",
     siteName: "Kingkiddph Ltd",
     type: "website",
@@ -25,7 +26,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
     description:
-      "Coming Soon: Kenya-based film and content production company creating purposeful visual storytelling for brands that connect, inspire and leave a lasting impact.",
+      "Kenya-based film and content production company creating purposeful visual storytelling for brands that connect, inspire and leave a lasting impact.",
     images: ["/images/kingkidd-webp/KingKiddPH-173.jpg"],
   },
   robots: {

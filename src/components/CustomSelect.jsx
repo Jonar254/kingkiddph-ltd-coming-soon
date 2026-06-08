@@ -109,7 +109,7 @@ export default function CustomSelect({
                   isActive
                     ? "bg-white/15 text-white"
                     : isSelected
-                    ? "bg-[#FF9500]/20 text-[#FF9500]"
+                    ? "bg-[#FF9500]/20 text-white"
                     : "text-white hover:bg-white/10"
                 }`}
               >

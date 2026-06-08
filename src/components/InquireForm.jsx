@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   Check,
@@ -27,12 +28,12 @@ const initialFormState = {
 };
 
 const serviceOptions = [
-  "Videography services (corporate, Events, Documentaries, Ads)",
-  "Photography Services (corporate, Events, Documentaries)",
-  "Social Media Services",
-  "Website Services",
-  "Live streaming Services",
-  "Podcast Services",
+  "Videography  ",
+  "Photography ",
+   "Website Development ",
+  "Social Media Management ",
+  "Live streaming ",
+  "Podcast ",
 ];
 
 const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -465,14 +466,28 @@ const InquireForm = () => {
               </p>
 
               {submitted ? (
-                <div className="flex flex-col items-start gap-5 py-12 md:py-16 text-white">
-                  <div className="w-16 h-16 rounded-full bg-[#FF9500] flex items-center justify-center">
-                    <Check className="w-7 h-7 text-black" />
+                <div className="flex flex-col items-start gap-8 py-12 md:py-16 text-white">
+                  <div className="w-full flex justify-center">
+                    <Image
+                      src="/images/kingkidd-logo-webp/stories-that-connect-white.webp"
+                      alt="Kingkiddph Stories That Connect"
+                      width={320}
+                      height={160}
+                      className="w-56 sm:w-64 md:w-72 h-auto"
+                      priority
+                    />
                   </div>
-                  <h3 className="font-serif-display text-3xl">Thank you!</h3>
-                  <p className="text-white text-base font-medium max-w-md leading-relaxed">
-                    Your submission has been received. A member of our team will get back to you within 24 hours.
-                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-full bg-[#FF9500] flex items-center justify-center">
+                      <Check className="w-7 h-7 text-black" />
+                    </div>
+                    <div>
+                      <h3 className="font-serif-display text-3xl">Thank you!</h3>
+                      <p className="text-white text-base font-medium leading-relaxed max-w-md">
+                        Your submission has been received. A member of our team will get back to you within 24 hours.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-2">

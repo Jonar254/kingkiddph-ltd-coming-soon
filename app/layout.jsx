@@ -1,5 +1,7 @@
 import "@/index.css";
 import { Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Kingkiddph Ltd - Stories That Connect | Coming Soon",
@@ -47,6 +49,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>{children}</body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
